@@ -131,7 +131,7 @@ public void show() {
 
 ToastUtils调用与系统自带的Toast调用相似，调用如下：
 
-ToastUtils.makeText(MainActivity.this, "消息内容",ToastUtils.LENGTH_SHORT).show();
+ToastUtils.makeText(context, "消息内容",ToastUtils.LENGTH_SHORT).show();
 
 ## 温馨提示
 
