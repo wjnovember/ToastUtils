@@ -39,6 +39,7 @@ public void show() {
 * java
 	* ToastUtils.java
 	* MainActivity.java
+	* BaseActivity.java
 * res/layout
 	* activity_main.xml
 	* toast_layout.xml
