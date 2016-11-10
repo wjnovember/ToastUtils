@@ -48,7 +48,7 @@ public void show() {
 
 ## 核心代码
 
-makeText()方法：
+**makeText()方法：**
 
 ```
 public static ToastUtils makeText(Context context, String message,
@@ -84,7 +84,7 @@ public static ToastUtils makeText(Context context, int resId, int HIDE_DELAY) {
 }
 ```
 
-show()方法：
+**show()方法：**
 
 ```
 public void show() {
