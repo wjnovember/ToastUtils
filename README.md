@@ -1,6 +1,6 @@
 ## 效果图
 
-![效果图](https://github.com/inerdstack/ToastUtils/blob/master/images/toastutils.png)
+<img width="200px">![效果图](https://github.com/inerdstack/ToastUtils/blob/master/images/toastutils.png)</img>
 
 ## 参考
 
