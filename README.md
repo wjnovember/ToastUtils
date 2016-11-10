@@ -134,8 +134,7 @@ ToastUtils.makeText(MainActivity.this, "消息内容",ToastUtils.LENGTH_SHORT).s
 
 ## 温馨提示
 
-1. Demo中为了与系统的Toast形成对比，将ToastUtils不居中的marginBottom设置偏大，实际开发中请将marginBottom设置为64dp，布局代码更改如下：
-
+1.Demo中为了与系统的Toast形成对比，将ToastUtils不居中的marginBottom设置偏大，实际开发中请将marginBottom设置为64dp，布局代码更改如下：
 ```
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mbContainer"
@@ -150,4 +149,4 @@ ToastUtils.makeText(MainActivity.this, "消息内容",ToastUtils.LENGTH_SHORT).s
     android:paddingRight="50dp">
 ```
 
-2. 为防止Activity切换时ToastUtils单例依然持有上一个Activity的Context，请在BaseActivity的onDestroy()方法中调用reset()方法
+2.为防止Activity切换时ToastUtils单例依然持有上一个Activity的Context，请在BaseActivity的onDestroy()方法中调用reset()方法
