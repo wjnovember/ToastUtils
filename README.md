@@ -1,6 +1,6 @@
 ## 效果图
 
-<img src="https://github.com/inerdstack/ToastUtils/blob/master/images/toastutils.png" width = "200" alt="图片名称" align=center />
+![](https://github.com/inerdstack/ToastUtils/blob/master/images/toastutils.png =200x)
 
 ## 参考
 
