@@ -1,6 +1,6 @@
-## 预览图
+## 效果图
 
-![](./toastutils.png)
+![效果图](https://github.com/inerdstack/ToastUtils/blob/master/images/toastutils.png)
 
 ## 参考
 
