@@ -133,7 +133,7 @@ public void show() {
      * 且上面的mContext.getClass().getName()其实是一样的
      * 所以使用上还需要在BaseActivity的onDestroy()方法中调用
      */
-    public static void resut() {
+    public static void reset() {
         mInstance = null;
     }
 
