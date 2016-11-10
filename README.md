@@ -135,7 +135,7 @@ ToastUtils.makeText(context, "消息内容",ToastUtils.LENGTH_SHORT).show();
 
 ## 温馨提示
 
-1.Demo中为了与系统的Toast形成对比，将ToastUtils不居中的marginBottom设置偏大，实际开发中请将marginBottom设置为64dp，布局代码更改如下：
+1.Demo中为了与系统的Toast形成对比，将ToastUtils布局中的marginBottom设置偏大，实际开发中请将marginBottom设置为64dp，布局代码更改如下：
 ```
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mbContainer"
