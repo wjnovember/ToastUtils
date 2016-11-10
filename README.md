@@ -39,6 +39,7 @@ public void show() {
 * java
 	* ToastUtils.java
 	* MainActivity.java
+	* BaseActivity.java
 * res/layout
 	* activity_main.xml
 	* toast_layout.xml
@@ -48,7 +49,7 @@ public void show() {
 
 ## 核心代码
 
-makeText()方法：
+**makeText()方法：**
 
 ```
 public static ToastUtils makeText(Context context, String message,
@@ -84,7 +85,7 @@ public static ToastUtils makeText(Context context, int resId, int HIDE_DELAY) {
 }
 ```
 
-show()方法：
+**show()方法：**
 
 ```
 public void show() {
@@ -131,3 +132,22 @@ public void show() {
 ToastUtils调用与系统自带的Toast调用相似，调用入下：
 
 ToastUtils.makeText(MainActivity.this, "消息内容",ToastUtils.LENGTH_SHORT).show();
+
+## 温馨提示
+
+1.Demo中为了与系统的Toast形成对比，将ToastUtils不居中的marginBottom设置偏大，实际开发中请将marginBottom设置为64dp，布局代码更改如下：
+```
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mbContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    android:layout_marginBottom="64dp"
+    
+    android:gravity="bottom|center"
+    android:orientation="vertical"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp">
+```
+
+2.为防止Activity切换时ToastUtils单例依然持有上一个Activity的Context，请在BaseActivity的onDestroy()方法中调用reset()方法
