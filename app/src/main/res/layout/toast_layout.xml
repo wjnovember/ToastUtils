@@ -3,7 +3,7 @@
     android:id="@+id/mbContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="64dp"
+    android:layout_marginBottom="200dp"
     android:gravity="bottom|center"
     android:orientation="vertical"
     android:paddingLeft="50dp"
