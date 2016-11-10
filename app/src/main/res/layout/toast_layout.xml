@@ -28,8 +28,8 @@
             android:gravity="center"
             android:shadowColor="#BB000000"
             android:shadowRadius="2.75"
-            android:textSize="12sp"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp" />
 
     </LinearLayout>
 </LinearLayout>

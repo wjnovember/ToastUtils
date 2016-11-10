@@ -45,73 +45,73 @@ public class ToastUtils {
         mTextView = (TextView) mView.findViewById(R.id.mbMessage);
     }
 
-public static ToastUtils makeText(Context context, String message,
-                                  int HIDE_DELAY) {
-    if (mInstance == null) {
-        mInstance = new ToastUtils(context);
-    } else {
-        // 考虑Activity切换时，Toast依然显示
-        if (!mContext.getClass().getName().endsWith(context.getClass().getName())) {
+    public static ToastUtils makeText(Context context, String message,
+                                      int HIDE_DELAY) {
+        if (mInstance == null) {
             mInstance = new ToastUtils(context);
+        } else {
+            // 考虑Activity切换时，Toast依然显示
+            if (!mContext.getClass().getName().endsWith(context.getClass().getName())) {
+                mInstance = new ToastUtils(context);
+            }
         }
+
+        if (HIDE_DELAY == LENGTH_LONG) {
+            mInstance.HIDE_DELAY = 2500;
+        } else {
+            mInstance.HIDE_DELAY = 1500;
+        }
+        mTextView.setText(message);
+        return mInstance;
     }
 
-    if (HIDE_DELAY == LENGTH_LONG) {
-        mInstance.HIDE_DELAY = 2500;
-    } else {
-        mInstance.HIDE_DELAY = 1500;
+    public static ToastUtils makeText(Context context, int resId, int HIDE_DELAY) {
+        String mes = "";
+        try {
+            mes = context.getResources().getString(resId);
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
+        return makeText(context, mes, HIDE_DELAY);
     }
-    mTextView.setText(message);
-    return mInstance;
-}
 
-public static ToastUtils makeText(Context context, int resId, int HIDE_DELAY) {
-    String mes = "";
-    try {
-        mes = context.getResources().getString(resId);
-    } catch (Resources.NotFoundException e) {
-        e.printStackTrace();
+    public void show() {
+        if (isShow) {
+            // 若已经显示，则不再次显示
+            return;
+        }
+        isShow = true;
+        // 显示动画
+        mFadeInAnimation = new AlphaAnimation(0.0f, 1.0f);
+        // 消失动画
+        mFadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
+        mFadeOutAnimation.setDuration(ANIMATION_DURATION);
+        mFadeOutAnimation
+                .setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // 消失动画后更改状态为 未显示
+                        isShow = false;
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // 隐藏布局，不使用remove方法为防止多次创建多个布局
+                        mContainer.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+        mContainer.setVisibility(View.VISIBLE);
+
+        mFadeInAnimation.setDuration(ANIMATION_DURATION);
+
+        mContainer.startAnimation(mFadeInAnimation);
+        mHandler.postDelayed(mHideRunnable, HIDE_DELAY);
     }
-    return makeText(context, mes, HIDE_DELAY);
-}
-
-public void show() {
-    if (isShow) {
-        // 若已经显示，则不再次显示
-        return;
-    }
-    isShow = true;
-    // 显示动画
-    mFadeInAnimation = new AlphaAnimation(0.0f, 1.0f);
-    // 消失动画
-    mFadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
-    mFadeOutAnimation.setDuration(ANIMATION_DURATION);
-    mFadeOutAnimation
-            .setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                    // 消失动画后更改状态为 未显示
-                    isShow = false;
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    // 隐藏布局，不使用remove方法为防止多次创建多个布局
-                    mContainer.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
-                }
-            });
-    mContainer.setVisibility(View.VISIBLE);
-
-    mFadeInAnimation.setDuration(ANIMATION_DURATION);
-
-    mContainer.startAnimation(mFadeInAnimation);
-    mHandler.postDelayed(mHideRunnable, HIDE_DELAY);
-}
 
     private final Runnable mHideRunnable = new Runnable() {
         @Override
